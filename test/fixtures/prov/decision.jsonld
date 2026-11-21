@@ -1,0 +1,123 @@
+{
+  "@context": {
+    "ap": "urn:ash-provenance:ns#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://app.example.com/id/quote/q-100#tier",
+      "@type": "prov:Entity",
+      "ap:bounds": {
+        "ap:cut": false,
+        "ap:depth": 2,
+        "ap:maxDepth": 4,
+        "ap:maxSteps": 50,
+        "ap:stepCount": 3
+      },
+      "prov:qualifiedDerivation": [
+        {
+          "@id": "_:b1"
+        }
+      ],
+      "prov:qualifiedGeneration": [
+        {
+          "@id": "_:b0"
+        }
+      ],
+      "prov:value": "gold",
+      "prov:wasDerivedFrom": [
+        {
+          "@id": "https://app.example.com/id/account/a-7#region"
+        }
+      ],
+      "prov:wasGeneratedBy": [
+        {
+          "@id": "https://app.example.com/id/decision_run/run-1"
+        }
+      ]
+    },
+    {
+      "@id": "https://app.example.com/id/decision_run/run-1",
+      "@type": "prov:Activity",
+      "prov:qualifiedAssociation": [
+        {
+          "@id": "_:b2"
+        }
+      ],
+      "prov:wasAssociatedWith": [
+        {
+          "@id": "urn:ash-provenance:agent:pricing%20rules"
+        }
+      ]
+    },
+    {
+      "@id": "_:b0",
+      "@type": "prov:Generation",
+      "ap:executionContext": "job",
+      "ap:granularity": "value",
+      "ap:plan": "pricing@3#a1b2c3d4",
+      "prov:activity": {
+        "@id": "https://app.example.com/id/decision_run/run-1"
+      },
+      "prov:atTime": {
+        "@type": "xsd:dateTime",
+        "@value": "2026-10-05T08:30:00Z"
+      }
+    },
+    {
+      "@id": "https://app.example.com/id/account/a-7#region",
+      "@type": "prov:Entity"
+    },
+    {
+      "@id": "_:b1",
+      "@type": "prov:Derivation",
+      "ap:granularity": "value",
+      "prov:entity": {
+        "@id": "https://app.example.com/id/account/a-7#region"
+      },
+      "prov:hadActivity": {
+        "@id": "https://app.example.com/id/decision_run/run-1"
+      }
+    },
+    {
+      "@id": "urn:ash-provenance:agent:pricing%20rules",
+      "@type": "prov:Agent",
+      "rdfs:label": "pricing rules"
+    },
+    {
+      "@id": "urn:ash-provenance:plan:pricing%403%23a1b2c3d4",
+      "@type": "prov:Plan"
+    },
+    {
+      "@id": "_:b2",
+      "@type": "prov:Association",
+      "ap:granularity": "record",
+      "ap:plan": "pricing@3#a1b2c3d4",
+      "prov:agent": {
+        "@id": "urn:ash-provenance:agent:pricing%20rules"
+      },
+      "prov:hadPlan": {
+        "@id": "urn:ash-provenance:plan:pricing%403%23a1b2c3d4"
+      }
+    },
+    {
+      "@id": "urn:ash-provenance:gap:0",
+      "@type": "ap:Gap",
+      "ap:gapKind": "unreadable",
+      "ap:gapOf": {
+        "@id": "https://app.example.com/id/account/a-7#region"
+      }
+    },
+    {
+      "@id": "urn:ash-provenance:gap:1",
+      "@type": "ap:Gap",
+      "ap:gapKind": "failed",
+      "ap:gapOf": {
+        "@id": "https://app.example.com/id/account/a-8#region"
+      },
+      "ap:summary": "evaluation raised an error"
+    }
+  ]
+}
