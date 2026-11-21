@@ -1,0 +1,61 @@
+{
+  "@context": {
+    "ap": "urn:ash-provenance:ns#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://app.example.com/id/membership/team_id=7;user_id=12?as_of=2026-09-30T00:00:00Z#role",
+      "@type": "prov:Entity",
+      "ap:bounds": {
+        "ap:cut": true,
+        "ap:depth": 1,
+        "ap:maxDepth": 1,
+        "ap:maxSteps": 50,
+        "ap:stepCount": 1
+      },
+      "prov:qualifiedGeneration": [
+        {
+          "@id": "_:b0"
+        }
+      ],
+      "prov:value": "admin",
+      "prov:wasGeneratedBy": [
+        {
+          "@id": "https://app.example.com/id/audit_event/0003"
+        }
+      ]
+    },
+    {
+      "@id": "https://app.example.com/id/audit_event/0003",
+      "@type": "prov:Activity"
+    },
+    {
+      "@id": "_:b0",
+      "@type": "prov:Generation",
+      "ap:granularity": "value",
+      "prov:activity": {
+        "@id": "https://app.example.com/id/audit_event/0003"
+      }
+    },
+    {
+      "@id": "urn:ash-provenance:gap:0",
+      "@type": "ap:Gap",
+      "ap:gapKind": "archived",
+      "ap:gapOf": {
+        "@id": "https://app.example.com/id/membership/team_id=7;user_id=12?as_of=2026-09-30T00:00:00Z#role"
+      },
+      "ap:summary": "older versions archived"
+    },
+    {
+      "@id": "urn:ash-provenance:gap:1",
+      "@type": "ap:Gap",
+      "ap:gapKind": "not_recorded",
+      "ap:gapOf": {
+        "@id": "https://app.example.com/id/membership/team_id=7;user_id=12?as_of=2026-09-30T00:00:00Z#role"
+      }
+    }
+  ]
+}
